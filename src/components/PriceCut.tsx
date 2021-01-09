@@ -7,7 +7,7 @@ import FormLabel from "@material-ui/core/FormLabel";
 const PriceCut:React.FC = () => {
     const [value, setValue] = React.useState("female");
 
-    const handleChange = (event) => {
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       setValue(event.target.value);
     };
     return (
@@ -18,9 +18,10 @@ const PriceCut:React.FC = () => {
       <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChange}>
         <FormControlLabel value="female" control={<Radio />} label="Female" />
         <FormControlLabel value="male" control={<Radio />} label="Male" />
-        <FormControlLabel value="other" control={<Radio />} label="Other" />
+        <FormControlLabel value="other"  control={<Radio />} label="Other" />
         <FormControlLabel value="disabled" disabled control={<Radio />} label="(Disabled option)" />
       </RadioGroup>
+
     </FormControl>
         </div>
     )
