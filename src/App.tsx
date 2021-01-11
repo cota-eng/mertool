@@ -1,13 +1,14 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import PetDetail from "./components/PetDetail";
+import IsPet from "./components/IsPet";
 import TobaccoDetail from "./components/TobaccoDetail";
 import PriceCut from "./components/PriceCut";
+import { Button } from "@material-ui/core";
 const App: React.FC = () => {
   return (
     <div className="App">
-      <PetDetail />
+      <IsPet />
       <TobaccoDetail />
       <PriceCut />
     </div>
