@@ -75,11 +75,13 @@ var App = function () {
             react_1["default"].createElement(IsPet_1["default"], { setIsPetText: setIsPetText }),
             react_1["default"].createElement(IsTobacco_1["default"], { setIsTabaccoText: setIsTabaccoText }),
             react_1["default"].createElement("br", null),
-            react_1["default"].createElement(core_1.TextField, { multiline: true, variant: "outlined", margin: "normal", value: overallText, inputRef: overallTextRef, placeholder: "生成ボタンを押してください。", fullWidth: true }),
+            react_1["default"].createElement(core_1.TextField, { multiline: true, variant: "outlined", margin: "normal", value: overallText, inputRef: overallTextRef, placeholder: "生成ボタンを押してください。" }),
             react_1["default"].createElement(Box_1["default"], { component: "span", m: 1 },
                 react_1["default"].createElement(core_1.Button, { variant: "outlined", onClick: clickedCreateText, color: "primary" }, "\u751F\u6210")),
             react_1["default"].createElement("br", null),
-            react_1["default"].createElement(core_1.Button, { onClick: copyToClipboard }, "COPY"),
-            react_1["default"].createElement(core_1.Button, null, "\u30E1\u30EB\u30AB\u30EA\u3092\u958B\u304F"))));
+            react_1["default"].createElement(Grid_1["default"], { container: true, direction: "row", justify: "center", alignItems: "center", spacing: 3 },
+                react_1["default"].createElement(Grid_1["default"], { item: true },
+                    react_1["default"].createElement(core_1.Button, { variant: "outlined", onClick: copyToClipboard, color: "primary" }, "COPY"),
+                    react_1["default"].createElement(core_1.Button, { target: "_blank", variant: "outlined", color: "secondary", href: "https://www.mercari.com/jp/" }, "\u30E1\u30EB\u30AB\u30EA\u3092\u958B\u304F"))))));
 };
 exports["default"] = App;

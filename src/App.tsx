@@ -71,6 +71,8 @@ const App: React.FC = () => {
         alignItems="center"
       >
         <p>生成される文章は丁寧語です。ご安心ください。</p>
+       
+
         <Grid item>
           <PriceCut setPriceCutText={setPriceCutText} />
         </Grid>
@@ -93,7 +95,6 @@ const App: React.FC = () => {
           value={overallText}
           inputRef={overallTextRef}
           placeholder={"生成ボタンを押してください。"}
-          fullWidth={true}
         />
         <Box component="span" m={1}>
           <Button
@@ -105,8 +106,31 @@ const App: React.FC = () => {
           </Button>
         </Box>
         <br />
-        <Button onClick={copyToClipboard}>COPY</Button>
-        <Button>メルカリを開く</Button>
+        <Grid
+          container
+          direction="row"
+          justify="center"
+          alignItems="center"
+          spacing={3}
+        >
+          <Grid item>
+            <Button
+              variant="outlined"
+              onClick={copyToClipboard}
+              color="primary"
+            >
+              COPY
+            </Button>
+            <Button
+              target="_blank"
+              variant="outlined"
+              color="secondary"
+              href="https://www.mercari.com/jp/"
+            >
+              メルカリを開く
+            </Button>
+          </Grid>
+        </Grid>
       </Grid>
     </div>
   );
