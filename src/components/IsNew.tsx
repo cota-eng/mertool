@@ -9,14 +9,14 @@ const IsNew: React.FC<IsNewProps> = (props) => {
   };
   const [isNew, setIsNew] = useState<boolean>(true);
   const isNewText: string = isNew
-    ? "新刊購入した本です。\n\n"
-    : "新刊購入したものではありません。\n\n";
+    ? "新品で購入した本です。\n\n"
+    : "新品で購入したものではありません。\n\n";
   useEffect(() => {
     props.setIsNewText(isNewText);
   }, [isNew]);
   return (
     <div>
-      <p>新刊購入したものですか？</p>
+      <p>新品で購入したものですか？</p>
       {isNew ? (
         <Button variant="contained" color="primary" onClick={handleIsNew}>
           YES

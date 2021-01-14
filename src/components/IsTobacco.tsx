@@ -9,14 +9,14 @@ const IsTobacco: React.FC<IsTabaccoProps> = (props) => {
     setIsTobacco(!isTobacco);
   };
   const tabaccoText = isTobacco
-    ? "タバコの匂いにご注意ください。"
-    : "タバコは吸っておりませんのでご安心ください。";
+    ? "タバコの匂いにご注意ください。\n\n"
+    : "タバコは吸っておりませんのでご安心ください。\n\n";
   useEffect(() => {
     props.setIsTabaccoText(tabaccoText);
   });
   return (
     <div>
-      <p>同居人を含め、タバコを吸ってる人はいますか？</p>
+      <p>タバコを吸ってる人はいますか？（同居人含む）</p>
       {isTobacco ? (
         <Button variant="contained" color="primary" onClick={handleIsTobacco}>
           YES

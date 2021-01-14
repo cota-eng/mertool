@@ -42,7 +42,7 @@ var IsPet = function (props) {
         else if (!isPet && isDog && isCat && isOthers) {
             props.setIsPetText("\u72AC\u3068\u732B\u3068" + otherPet + "\u3092\u98FC\u3063\u3066\u3044\u307E\u3059\u3002\n\n");
         }
-    }, [isPet, isDog, isCat, otherPet, isOthers]);
+    }, [isPet, isDog, isCat, otherPet, isOthers, props]);
     react_1.useEffect(function () {
         if (isPet === true) {
             setIsDog(false);
@@ -57,24 +57,20 @@ var IsPet = function (props) {
         // }
     }, [isPet, isDog, isCat, isOthers]);
     var otherPetHandler = function (e) {
+        e.preventDefault();
         setOtherPet(e.target.value);
     };
-    //   useEffect(() => {
-    //     return () => {
-    //       otherPetHandler;
-    //     };
-    //   }, [otherPet]);
     return (react_1["default"].createElement("div", null,
-        react_1["default"].createElement("p", null, "\u90E8\u5C4B\u306E\u4E2D\u3067\u30DA\u30C3\u30C8\u3092\u98FC\u3063\u3066\u3044\u307E\u3059\u304B\uFF1F"),
-        react_1["default"].createElement(core_1.Checkbox, { checked: isPet, name: "nothing", onChange: function () { return setIsPet(!isPet); }, disabled: isDog || isCat || isOthers }),
-        react_1["default"].createElement("a", { className: !isPet ? classes.hideText : "" }, "\u306A\u3057\u3000"),
+        react_1["default"].createElement("p", null, "Q1:\u90E8\u5C4B\u306E\u4E2D\u3067\u30DA\u30C3\u30C8\u3092\u98FC\u3063\u3066\u3044\u307E\u3059\u304B\uFF1F"),
+        react_1["default"].createElement(core_1.Checkbox, { checked: isPet, name: "nothing", onChange: function () { return setIsPet(!isPet); } }),
+        react_1["default"].createElement("span", null, "\u3044\u3044\u3048"),
         react_1["default"].createElement(core_1.Checkbox, { checked: isDog, name: "dog", onChange: function () { return setIsDog(!isDog); }, disabled: isPet }),
-        react_1["default"].createElement("a", { className: isPet ? classes.hideText : "" }, "\u72AC\u3000\u3000"),
+        react_1["default"].createElement("span", { className: isPet ? classes.hideText : "" }, "\u72AC"),
         react_1["default"].createElement(core_1.Checkbox, { checked: isCat, name: "cat", onChange: function () { return setIsCat(!isCat); }, disabled: isPet }),
-        react_1["default"].createElement("a", { className: isPet ? classes.hideText : "" }, "\u732B\u3000\u3000"),
+        react_1["default"].createElement("span", { className: isPet ? classes.hideText : "" }, "\u732B"),
         react_1["default"].createElement(core_1.Checkbox, { name: "others", checked: isOthers, onChange: function () { return setIsOthers(!isOthers); }, disabled: isPet }),
-        react_1["default"].createElement("a", { className: isPet ? classes.hideText : "" }, "\u305D\u306E\u4ED6\u3000\u3000"),
+        react_1["default"].createElement("span", { className: isPet ? classes.hideText : "" }, "\u305D\u306E\u4ED6"),
         react_1["default"].createElement("br", null),
-        isOthers ? (react_1["default"].createElement(core_1.TextField, { id: "outlined-basic", label: "Animal", variant: "outlined", value: otherPet, onChange: otherPetHandler })) : ("")));
+        react_1["default"].createElement(core_1.TextField, { id: "outlined-basic", label: "Animal", variant: "outlined", value: otherPet, onChange: otherPetHandler, disabled: !isOthers })));
 };
 exports["default"] = IsPet;

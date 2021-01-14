@@ -36,7 +36,7 @@ const IsPet: React.FC<IsPetProps> = (props) => {
     } else if (!isPet && isDog && isCat && isOthers) {
       props.setIsPetText(`犬と猫と${otherPet}を飼っています。\n\n`);
     }
-  }, [isPet, isDog, isCat, otherPet, isOthers]);
+  }, [isPet, isDog, isCat, otherPet, isOthers, props]);
   useEffect(() => {
     if (isPet === true) {
       setIsDog(false);
@@ -51,57 +51,50 @@ const IsPet: React.FC<IsPetProps> = (props) => {
   }, [isPet, isDog, isCat, isOthers]);
 
   const otherPetHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
     setOtherPet(e.target.value);
   };
-  //   useEffect(() => {
-  //     return () => {
-  //       otherPetHandler;
-  //     };
-  //   }, [otherPet]);
 
   return (
     <div>
-      <p>部屋の中でペットを飼っていますか？</p>
+      <p>Q1:部屋の中でペットを飼っていますか？</p>
       <Checkbox
         checked={isPet}
         name="nothing"
         onChange={() => setIsPet(!isPet)}
-        disabled={isDog || isCat || isOthers}
       />
-      <a className={!isPet ? classes.hideText : ""}>なし　</a>
+      <span>いいえ</span>
+      {/* <span className={!isPet ? classes.hideText : ""}>いいえ</span> */}
       <Checkbox
         checked={isDog}
         name="dog"
         onChange={() => setIsDog(!isDog)}
         disabled={isPet}
       />
-      <a className={isPet ? classes.hideText : ""}>犬　　</a>
+      <span className={isPet ? classes.hideText : ""}>犬</span>
       <Checkbox
         checked={isCat}
         name="cat"
         onChange={() => setIsCat(!isCat)}
         disabled={isPet}
       />
-      <a className={isPet ? classes.hideText : ""}>猫　　</a>
+      <span className={isPet ? classes.hideText : ""}>猫</span>
       <Checkbox
         name="others"
         checked={isOthers}
         onChange={() => setIsOthers(!isOthers)}
         disabled={isPet}
       />
-      <a className={isPet ? classes.hideText : ""}>その他　　</a>
+      <span className={isPet ? classes.hideText : ""}>その他</span>
       <br />
-      {isOthers ? (
-        <TextField
-          id="outlined-basic"
-          label="Animal"
-          variant="outlined"
-          value={otherPet}
-          onChange={otherPetHandler}
-        />
-      ) : (
-        ""
-      )}
+      <TextField
+        id="outlined-basic"
+        label="Animal"
+        variant="outlined"
+        value={otherPet}
+        onChange={otherPetHandler}
+        disabled={!isOthers}
+      />
     </div>
   );
 };
