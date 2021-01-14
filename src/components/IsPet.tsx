@@ -15,8 +15,6 @@ const IsPet: React.FC<IsPetProps> = (props) => {
   const [isCat, setIsCat] = useState<boolean>(false);
   const [isOthers, setIsOthers] = useState<boolean>(false);
   const [otherPet, setOtherPet] = useState<string>("");
-  //   const [petText, setPetText] = useState<string>("");
-  // const petText = "";
   const classes = useStyles();
   useEffect(() => {
     if (!isDog && !isCat && !isOthers) {
@@ -57,14 +55,13 @@ const IsPet: React.FC<IsPetProps> = (props) => {
 
   return (
     <div>
-      <p>Q1:部屋の中でペットを飼っていますか？</p>
+      <p>Q5:部屋の中でペットを飼っていますか？</p>
       <Checkbox
         checked={isPet}
         name="nothing"
         onChange={() => setIsPet(!isPet)}
       />
       <span>いいえ</span>
-      {/* <span className={!isPet ? classes.hideText : ""}>いいえ</span> */}
       <Checkbox
         checked={isDog}
         name="dog"

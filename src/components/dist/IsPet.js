@@ -14,8 +14,6 @@ var IsPet = function (props) {
     var _c = react_1.useState(false), isCat = _c[0], setIsCat = _c[1];
     var _d = react_1.useState(false), isOthers = _d[0], setIsOthers = _d[1];
     var _e = react_1.useState(""), otherPet = _e[0], setOtherPet = _e[1];
-    //   const [petText, setPetText] = useState<string>("");
-    // const petText = "";
     var classes = useStyles();
     react_1.useEffect(function () {
         if (!isDog && !isCat && !isOthers) {
@@ -61,7 +59,7 @@ var IsPet = function (props) {
         setOtherPet(e.target.value);
     };
     return (react_1["default"].createElement("div", null,
-        react_1["default"].createElement("p", null, "Q1:\u90E8\u5C4B\u306E\u4E2D\u3067\u30DA\u30C3\u30C8\u3092\u98FC\u3063\u3066\u3044\u307E\u3059\u304B\uFF1F"),
+        react_1["default"].createElement("p", null, "Q5:\u90E8\u5C4B\u306E\u4E2D\u3067\u30DA\u30C3\u30C8\u3092\u98FC\u3063\u3066\u3044\u307E\u3059\u304B\uFF1F"),
         react_1["default"].createElement(core_1.Checkbox, { checked: isPet, name: "nothing", onChange: function () { return setIsPet(!isPet); } }),
         react_1["default"].createElement("span", null, "\u3044\u3044\u3048"),
         react_1["default"].createElement(core_1.Checkbox, { checked: isDog, name: "dog", onChange: function () { return setIsDog(!isDog); }, disabled: isPet }),

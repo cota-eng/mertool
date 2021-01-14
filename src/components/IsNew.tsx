@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "@material-ui/core";
+import Grid from "@material-ui/core/Grid";
+
 interface IsNewProps {
   setIsNewText: (text: string) => void;
 }
@@ -16,16 +18,36 @@ const IsNew: React.FC<IsNewProps> = (props) => {
   }, [isNew]);
   return (
     <div>
-      <p>新品で購入したものですか？</p>
-      {isNew ? (
-        <Button variant="contained" color="primary" onClick={handleIsNew}>
-          YES
-        </Button>
-      ) : (
-        <Button variant="contained" color="secondary" onClick={handleIsNew}>
-          NO
-        </Button>
-      )}
+      <Grid
+        container
+        direction="column"
+        justify="flex-start"
+        alignItems="flex-start"
+      >
+        <Grid item>
+          <span>Q2:新品で購入したものですか？</span>
+
+          {isNew ? (
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleIsNew}
+              size="small"
+            >
+              YES
+            </Button>
+          ) : (
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={handleIsNew}
+              size="small"
+            >
+              NO
+            </Button>
+          )}
+        </Grid>
+      </Grid>
     </div>
   );
 };

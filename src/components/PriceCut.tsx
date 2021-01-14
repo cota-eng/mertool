@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "@material-ui/core";
+import Grid from "@material-ui/core/Grid";
+
 interface PriceCutProps {
   setPriceCutText: (text: string) => void;
 }
@@ -13,19 +15,38 @@ const PriceCut: React.FC<PriceCutProps> = (props) => {
   };
   useEffect(() => {
     props.setPriceCutText(priceCutText);
-  }, [isPriceCut]);
+  }, [props]);
   return (
     <div>
-      <p>値下げ交渉をうけつけますか？</p>
-      {isPriceCut ? (
-        <Button variant="contained" color="primary" onClick={handlePriceCut}>
-          OK
-        </Button>
-      ) : (
-        <Button variant="contained" color="secondary" onClick={handlePriceCut}>
-          NG
-        </Button>
-      )}
+      <Grid
+        container
+        direction="column"
+        justify="flex-start"
+        alignItems="flex-start"
+      >
+        <Grid item>
+          <span>Q1:値下げ交渉をうけつけますか？</span>
+          {isPriceCut ? (
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handlePriceCut}
+              size="small"
+            >
+              OK
+            </Button>
+          ) : (
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={handlePriceCut}
+              size="small"
+            >
+              NG
+            </Button>
+          )}
+        </Grid>
+      </Grid>
     </div>
   );
 };

@@ -3,6 +3,7 @@ import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
+import Grid from "@material-ui/core/Grid";
 interface IsDamagedProps {
   setIsDamagedText: (text: string) => void;
 }
@@ -25,33 +26,52 @@ const IsDamaged: React.FC<IsDamagedProps> = (props) => {
         );
         break;
       case "check":
-        props.setIsDamagedText("お手数ですが写真をご確認ください。\n\n");
+        props.setIsDamagedText(
+          "本の傷については、お手数ですが写真をご確認ください。\n\n"
+        );
         break;
     }
   }, [value]);
   return (
     <div>
-      <p>本に傷はありますか？</p>
-      <FormControl component="fieldset">
-        <RadioGroup aria-label="gender" value={value} onChange={handleChange}>
-          <FormControlLabel value="no" control={<Radio />} label="ほぼない" />
-          <FormControlLabel
-            value="little"
-            control={<Radio />}
-            label="かすり傷"
-          />
-          <FormControlLabel
-            value="check"
-            control={<Radio />}
-            label="目立つ傷"
-          />
-          <FormControlLabel
-            value="写真を確認してもらう"
-            control={<Radio />}
-            label="写真を確認してもらう"
-          />
-        </RadioGroup>
-      </FormControl>
+      <Grid
+        container
+        direction="column"
+        justify="flex-start"
+        alignItems="flex-start"
+      >
+        <Grid item>
+          <p>Q3:本に傷はありますか？</p>
+          <FormControl component="fieldset">
+            <RadioGroup
+              aria-label="gender"
+              value={value}
+              onChange={handleChange}
+            >
+              <FormControlLabel
+                value="no"
+                control={<Radio />}
+                label="ほぼない"
+              />
+              <FormControlLabel
+                value="little"
+                control={<Radio />}
+                label="かすり傷"
+              />
+              <FormControlLabel
+                value="large"
+                control={<Radio />}
+                label="目立つ傷"
+              />
+              <FormControlLabel
+                value="check"
+                control={<Radio />}
+                label="写真を確認"
+              />
+            </RadioGroup>
+          </FormControl>
+        </Grid>
+      </Grid>
     </div>
   );
 };

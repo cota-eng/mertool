@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "@material-ui/core";
+import Grid from "@material-ui/core/Grid";
+
 interface IsTabaccoProps {
   setIsTabaccoText: (text: string) => void;
 }
@@ -16,7 +18,11 @@ const IsTobacco: React.FC<IsTabaccoProps> = (props) => {
   });
   return (
     <div>
-      <p>タバコを吸ってる人はいますか？（同居人含む）</p>
+      <p>
+        Q6タバコを吸ってる人はいますか？
+        <br />
+        （同居人含む）
+      </p>
       {isTobacco ? (
         <Button variant="contained" color="primary" onClick={handleIsTobacco}>
           YES
