@@ -31,7 +31,7 @@ const IsDamaged: React.FC<IsDamagedProps> = (props) => {
         );
         break;
     }
-  }, [value]);
+  }, [value, props]);
   return (
     <div>
       <Grid

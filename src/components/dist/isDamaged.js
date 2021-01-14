@@ -26,7 +26,7 @@ var IsDamaged = function (props) {
                 props.setIsDamagedText("本の傷については、お手数ですが写真をご確認ください。\n\n");
                 break;
         }
-    }, [value]);
+    }, [value, props]);
     return (react_1["default"].createElement("div", null,
         react_1["default"].createElement(Grid_1["default"], { container: true, direction: "column", justify: "flex-start", alignItems: "flex-start" },
             react_1["default"].createElement(Grid_1["default"], { item: true },

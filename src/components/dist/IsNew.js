@@ -13,7 +13,7 @@ var IsNew = function (props) {
         : "新品で購入したものではありません。\n\n";
     react_1.useEffect(function () {
         props.setIsNewText(isNewText);
-    }, [isNew]);
+    }, [isNew, props]);
     return (react_1["default"].createElement("div", null,
         react_1["default"].createElement(Grid_1["default"], { container: true, direction: "column", justify: "flex-start", alignItems: "flex-start" },
             react_1["default"].createElement(Grid_1["default"], { item: true },
