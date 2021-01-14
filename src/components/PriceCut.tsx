@@ -1,18 +1,22 @@
-import React, { useState } from "react";
-import Radio from "@material-ui/core/Radio";
-import RadioGroup from "@material-ui/core/RadioGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormControl from "@material-ui/core/FormControl";
-import FormLabel from "@material-ui/core/FormLabel";
+import React, { useState, useEffect } from "react";
 import { Button } from "@material-ui/core";
-const PriceCut: React.FC = () => {
+interface PriceCutProps {
+  setPriceCutText: (text: string) => void;
+}
+const PriceCut: React.FC<PriceCutProps> = (props) => {
   const [isPriceCut, setIsPriceCut] = useState<boolean>(false);
+  const priceCutText = isPriceCut
+    ? "値下げ交渉OKです。\n\n"
+    : "値下げ交渉NGです。\n\n";
   const handlePriceCut = () => {
     setIsPriceCut(!isPriceCut);
   };
+  useEffect(() => {
+    props.setPriceCutText(priceCutText);
+  }, [isPriceCut]);
   return (
     <div>
-      <p>値下げ交渉</p>
+      <p>値下げ交渉をうけつけますか？</p>
       {isPriceCut ? (
         <Button variant="contained" color="primary" onClick={handlePriceCut}>
           OK
@@ -22,27 +26,6 @@ const PriceCut: React.FC = () => {
           NG
         </Button>
       )}
-      {/* <FormControl component="fieldset">
-        <FormLabel component="legend">PriceCut</FormLabel>
-        <RadioGroup
-          aria-label="gender"
-          name="gender1"
-          value={isPriceCut}
-          //   onChange={handleChange}
-        >
-          <FormControlLabel 
-          value={isPriceCut} 
-          control={<Radio />} 
-                      label="NG"
-                  />
-          <FormControlLabel
-            value={!isPriceCut}
-            control={<Radio />}
-            label="OK"
-            onClick={() => setIsPriceCut(!isPriceCut)}
-          />
-        </RadioGroup>
-      </FormControl> */}
     </div>
   );
 };

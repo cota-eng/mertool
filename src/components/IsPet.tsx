@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Radio from "@material-ui/core/Radio";
-import RadioGroup from "@material-ui/core/RadioGroup";
 import { TextField, Checkbox } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles({
@@ -9,7 +7,7 @@ const useStyles = makeStyles({
   },
 });
 interface IsPetProps {
-  PetText: string;
+  setIsPetText: (text: string) => void;
 }
 const IsPet: React.FC<IsPetProps> = (props) => {
   const [isPet, setIsPet] = useState<boolean>(true);
@@ -17,12 +15,28 @@ const IsPet: React.FC<IsPetProps> = (props) => {
   const [isCat, setIsCat] = useState<boolean>(false);
   const [isOthers, setIsOthers] = useState<boolean>(false);
   const [otherPet, setOtherPet] = useState<string>("");
-  const [petText, setPetText] = useState<string>("No");
-
+  //   const [petText, setPetText] = useState<string>("");
+  // const petText = "";
   const classes = useStyles();
-  //   const OtherPetHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //     e.preventDefault();
-  //   };
+  useEffect(() => {
+    if (!isDog && !isCat && !isOthers) {
+      props.setIsPetText("ペットは飼っていません。\n\n");
+    } else if (!isPet && isDog && !isCat && !isOthers) {
+      props.setIsPetText("犬を飼っています。\n\n");
+    } else if (!isPet && !isDog && isCat && !isOthers) {
+      props.setIsPetText("猫を飼っています。\n\n");
+    } else if (!isPet && !isDog && !isCat && isOthers) {
+      props.setIsPetText(`${otherPet}を飼っています。\n\n`);
+    } else if (!isPet && isDog && isCat && !isOthers) {
+      props.setIsPetText("犬と猫を飼っています。\n\n");
+    } else if (!isPet && isDog && !isCat && isOthers) {
+      props.setIsPetText(`犬と${otherPet}を飼っています。\n\n`);
+    } else if (!isPet && !isDog && isCat && isOthers) {
+      props.setIsPetText(`猫と${otherPet}を飼っています。\n\n`);
+    } else if (!isPet && isDog && isCat && isOthers) {
+      props.setIsPetText(`犬と猫と${otherPet}を飼っています。\n\n`);
+    }
+  }, [isPet, isDog, isCat, otherPet, isOthers]);
   useEffect(() => {
     if (isPet === true) {
       setIsDog(false);
@@ -31,16 +45,28 @@ const IsPet: React.FC<IsPetProps> = (props) => {
     } else if (isDog === true || isCat === true || isOthers === true) {
       setIsPet(false);
     }
+    // else if (isDog === false && isCat === false && isOthers === false) {
+    //   setIsPet(true);
+    // }
   }, [isPet, isDog, isCat, isOthers]);
-  useEffect(() => {}, [isPet, isDog, isCat, isOthers]);
+
+  const otherPetHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setOtherPet(e.target.value);
+  };
+  //   useEffect(() => {
+  //     return () => {
+  //       otherPetHandler;
+  //     };
+  //   }, [otherPet]);
+
   return (
     <div>
       <p>部屋の中でペットを飼っていますか？</p>
-
       <Checkbox
         checked={isPet}
         name="nothing"
         onChange={() => setIsPet(!isPet)}
+        disabled={isDog || isCat || isOthers}
       />
       <a className={!isPet ? classes.hideText : ""}>なし　</a>
       <Checkbox
@@ -71,9 +97,7 @@ const IsPet: React.FC<IsPetProps> = (props) => {
           label="Animal"
           variant="outlined"
           value={otherPet}
-          onChange={(e) => {
-            setOtherPet(e.target.value);
-          }}
+          onChange={otherPetHandler}
         />
       ) : (
         ""

@@ -1,11 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "@material-ui/core";
-const IsNew: React.FC = () => {
+interface IsNewProps {
+  setIsNewText: (text: string) => void;
+}
+const IsNew: React.FC<IsNewProps> = (props) => {
   const handleIsNew = () => {
     setIsNew(!isNew);
   };
   const [isNew, setIsNew] = useState<boolean>(true);
-
+  const isNewText: string = isNew
+    ? "新刊購入した本です。\n\n"
+    : "新刊購入したものではありません。\n\n";
+  useEffect(() => {
+    props.setIsNewText(isNewText);
+  }, [isNew]);
   return (
     <div>
       <p>新刊購入したものですか？</p>
