@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "@material-ui/core";
-import Grid from "@material-ui/core/Grid";
 
 interface IsTabaccoProps {
   setIsTabaccoText: (text: string) => void;

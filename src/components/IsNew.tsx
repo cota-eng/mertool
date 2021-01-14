@@ -15,7 +15,7 @@ const IsNew: React.FC<IsNewProps> = (props) => {
     : "新品で購入したものではありません。\n\n";
   useEffect(() => {
     props.setIsNewText(isNewText);
-  }, [isNew, props]);
+  }, [props]);
   return (
     <div>
       <Grid

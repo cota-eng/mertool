@@ -13,7 +13,7 @@ var PriceCut = function (props) {
     };
     react_1.useEffect(function () {
         props.setPriceCutText(priceCutText);
-    }, [props]);
+    }, [priceCutText]);
     return (react_1["default"].createElement("div", null,
         react_1["default"].createElement(Grid_1["default"], { container: true, direction: "column", justify: "flex-start", alignItems: "flex-start" },
             react_1["default"].createElement(Grid_1["default"], { item: true },

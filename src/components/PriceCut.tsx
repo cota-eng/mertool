@@ -15,7 +15,7 @@ const PriceCut: React.FC<PriceCutProps> = (props) => {
   };
   useEffect(() => {
     props.setPriceCutText(priceCutText);
-  }, [props]);
+  }, [priceCutText]);
   return (
     <div>
       <Grid
